@@ -9,9 +9,9 @@ public class Main {
 
     static void AnaMenu() {
         BoslukSpam();
-        System.out.println("Uygulama Versiyonu : " + sozluk.getSurum());
         System.out.println("1----------> Ara");
         System.out.println("2----------> Kelime Ekle");
+        System.out.println("3----------> Hakkında");
         System.out.println("3----------> Çıkış");
         System.out.print("-> ");
         Scanner scn = new Scanner(System.in);
@@ -30,7 +30,9 @@ public class Main {
             case "2" -> {
                 EklemeMenusu();
             }
-            case "3" -> System.exit(0);
+            case "3" -> Hakkinda();
+            case "4" -> System.exit(0);
+
         }
     }
 
@@ -79,6 +81,13 @@ public class Main {
 
     static void BoslukSpam() {
         System.out.println("\n".repeat(50));
+    }
+
+    static void Hakkinda() {
+        BoslukSpam();
+        System.out.println("Uygulama Versiyonu : " + sozluk.getSurum());
+        System.out.println("Github adresi : https://github.com/blcouz/");
+        EnterBekle();
     }
 }
 
