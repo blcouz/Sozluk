@@ -9,7 +9,6 @@ import java.util.Scanner;
 import static java.lang.System.getProperty;
 
 public class Sozluk {
-    private final String surum = "1.0";
     private final List<KelimeVeCeviri> ceviriListesi = new ArrayList<>();
     private final File trdenEngyeVeriTabani = new File(getProperty("user.dir") + "\\sozluk.txt");
     Locale turkceKelimeALtYapisi = new Locale("tr","TR");
@@ -83,18 +82,15 @@ public class Sozluk {
         }
 
     }
-    private void BoslukSpam(){
-        System.out.println("\n".repeat(50));
-    }
 
     public String getSurum() {
-        return surum;
+        return "1.0";
     }
 }
 
 class KelimeVeCeviri {
-    private String kelime;
-    private String cevirisi;
+    private final String kelime;
+    private final String cevirisi;
 
     KelimeVeCeviri(String kelime, String cevrisi) {
         this.kelime = kelime;
@@ -110,8 +106,7 @@ class KelimeVeCeviri {
     }
 
     public KelimeVeCeviri TersineCevir() {
-        KelimeVeCeviri a = new KelimeVeCeviri(cevirisi, kelime);
-        return a;
+        return new KelimeVeCeviri(cevirisi, kelime);
     }
 
     public String KelimeVeCevirisi() {
