@@ -17,9 +17,7 @@ public class Main {
         Scanner scn = new Scanner(System.in);
         String a = scn.nextLine();
         switch (a) {
-            default -> {
-                AnaMenu();
-            }
+            default -> AnaMenu();
             case "1" -> {
                 System.out.print("Aranacak Kelime : ");
                 a = scn.nextLine();
@@ -27,9 +25,7 @@ public class Main {
                 EnterBekle();
                 AnaMenu();
             }
-            case "2" -> {
-                EklemeMenusu();
-            }
+            case "2" -> EklemeMenusu();
             case "3" -> Hakkinda();
             case "4" -> System.exit(0);
 
@@ -75,7 +71,7 @@ public class Main {
     static void EnterBekle() {
         try {
             System.in.read();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
