@@ -9,9 +9,9 @@ import java.util.Scanner;
 import static java.lang.System.getProperty;
 
 public class Sozluk {
-    private String surum = "1.0";
-    private List<KelimeVeCeviri> ceviriListesi = new ArrayList<>();
-    private File trdenEngyeVeriTabani = new File(getProperty("user.dir") + "\\sozluk.txt");
+    private final String surum = "1.0";
+    private final List<KelimeVeCeviri> ceviriListesi = new ArrayList<>();
+    private final File trdenEngyeVeriTabani = new File(getProperty("user.dir") + "\\sozluk.txt");
     Locale turkceKelimeALtYapisi = new Locale("tr","TR");
     Sozluk(){
         VeriTabanindanKelimeleriCek();
@@ -41,12 +41,12 @@ public class Sozluk {
     public void Ara(String aranacakKelime) {
         List<KelimeVeCeviri> trEng = new ArrayList<>();
         List<KelimeVeCeviri> engTr = new ArrayList<>();
-        for (int i = 0; i < ceviriListesi.size(); i++) {
-            if (ceviriListesi.get(i).getKelime().toLowerCase(turkceKelimeALtYapisi).equals(aranacakKelime.toLowerCase(turkceKelimeALtYapisi))) {
-                trEng.add(ceviriListesi.get(i));
+        for (KelimeVeCeviri kelimeVeCeviri : ceviriListesi) {
+            if (kelimeVeCeviri.getKelime().toLowerCase(turkceKelimeALtYapisi).equals(aranacakKelime.toLowerCase(turkceKelimeALtYapisi))) {
+                trEng.add(kelimeVeCeviri);
             }
-            if (ceviriListesi.get(i).getCevirisi().toLowerCase(turkceKelimeALtYapisi).equals(aranacakKelime.toLowerCase(turkceKelimeALtYapisi))) {
-                engTr.add(ceviriListesi.get(i).TersineCevir());
+            if (kelimeVeCeviri.getCevirisi().toLowerCase(turkceKelimeALtYapisi).equals(aranacakKelime.toLowerCase(turkceKelimeALtYapisi))) {
+                engTr.add(kelimeVeCeviri.TersineCevir());
             }
         }
         if (trEng.size() > 0 | engTr.size() > 0) {
@@ -75,6 +75,7 @@ public class Sozluk {
                 String satir = scanner.nextLine();
                 String[] k_c = satir.split("/");
                 KelimeVeCeviri eklenecekCeviri = new KelimeVeCeviri(k_c[0],k_c[1] );
+                ceviriListesi.add(eklenecekCeviri);
             }
             scanner.close();
         } catch (Exception e) {
